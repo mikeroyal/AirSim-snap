@@ -11,10 +11,7 @@
 <a href="https://build.snapcraft.io/user/snapcrafters/fork-and-rename-me"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>
 </p>
 -->
-
-<!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "my-snap-name")
--->
+![my-snap-name](https://user-images.githubusercontent.com/45159366/50394255-2e0db700-0711-11e9-8d0e-1570c1004f46.jpeg?raw=true "my-snap-name")
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
@@ -23,9 +20,6 @@
     sudo snap install airsim
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
-
-# AirSim Autonomous Car demo
-![my-snap-name](https://user-images.githubusercontent.com/45159366/50394255-2e0db700-0711-11e9-8d0e-1570c1004f46.jpeg?raw=true "my-snap-name")
 
 ## Remaining tasks
 
