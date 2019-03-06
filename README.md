@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/45159366/50394114-09fda600-0710-11e9-93c8-8c4788f86ec4.png">
+  <img src="https://user-images.githubusercontent.com/45159366/53900605-c36ed680-3ff1-11e9-8491-942398856b0b.png">
   <br />
   AirSim
 </h1>
