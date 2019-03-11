@@ -16,7 +16,7 @@
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
 ## Install
-
+    sudo snap install unrealengine
     sudo snap install airsim
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
