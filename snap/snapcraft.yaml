@@ -1,16 +1,12 @@
 name: airsim
-summary: Open source simulator for autonomous vehicles built on Unreal Engine/Unity, from Microsoft AI & Research.
-description: 
-  
-adopt-info: devmode # use 'strict' once you have the right plugs and slots
+summary: Open source simulator.
+description: Open source simulator for autonomous vehicles built on Unreal Engine/Unity, from Microsoft AI & Research.
 
-grade: stable
 confinement: devmode
+base: core18
 
 architectures:
   - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
 
 apps:
   airsim:
@@ -19,45 +15,26 @@ apps:
       - home
       - network
       - removable-media
+      - opengl
 
 parts:
   airsim:
-    plugin: 
-    source: https://github.com/Microsoft/AirSim.git
-    source-type: git
-    override-pull: |
-      git clone https://github.com/Microsoft/AirSim.git src/github.com/Microsoft/AirSim
-       cd src/github.com/Microsoft/AirSim
-      last_committed_tag="$(git describe --tags --abbrev=0)"
-      last_committed_tag_ver="$(echo ${last_committed_tag} | sed 's/v//')"
-      last_released_tag="$(snap info $SNAPCRAFT_PROJECT_NAME | awk '$1 == "beta:" { print $2 }')"
-      # If the latest tag from the upstream project has not been released to
-      # beta, build that tag instead of master.
-      if [ "${last_committed_tag_ver}" != "${last_released_tag}" ]; then
-        git fetch
-        git checkout "${last_committed_tag}"
-      fi
-      snapcraftctl set-version "$(git describe --tags | sed 's/v//')"
-      override-build: |
-      export GOPATH=$PWD
-      cd src/github.com/Microsoft/AirSim
-      env CGO_ENABLED=0 GOOS=linux \
-      go build --ldflags "-s -w \
-        -X 'github.com/Microsoft/AirSim/version.GitCommit=$(git rev-list -1 HEAD)' \
-        -X 'github.com/Microsoft/AirSim/version.Version=$(git describe --tags --abbrev=0)'" \
-        -a -installsuffix cgo -o $SNAPCRAFT_PART_INSTALL/bin/AirSim
-    build-snaps:
-      - 
+    plugin: cmake
+    source-type: tar
+    source: https://github.com/AirSim-1.2.0Linux.tar.gz
     build-packages:
       - git
       - sed
       - g++
       - make
+      - build-essential 
+      - autotools-dev 
       - libsdl1.2-dev
       - libpng-dev
       - libsdl-net1.2-dev
       - libsdl-sound1.2-dev
       - libasound2-dev
+      - g++-multilib
     stage-packages:
       - libsdl-sound1.2
       - libsdl-net1.2
@@ -108,3 +85,9 @@ parts:
       - libxdmcp6
       - libxext6
       - zlib1g
+      
+apps:
+  airsim:
+    command: airsim
+    environment:
+      "DISABLE_WAYLAND": "1"
